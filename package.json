@@ -1,0 +1,49 @@
+{
+  "name": "csv-to-docx-generator",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Nichole Mattera",
+    "url": "https://nicholemattera.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholemattera/CSV-to-Docx-Generator.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "format": "prettier --check **/*.{html,js,json,md}",
+    "format:fix": "prettier --write **/*.{html,js,json,md}",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "docxtemplater": "^3.68.2",
+    "papaparse": "^5.5.3",
+    "pizzip": "^3.2.0"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.0",
+    "prettier": "^3.8.1",
+    "vite": "^7.3.1"
+  },
+  "private": true,
+  "lint-staged": {
+    "**/*.{html,js,json,md}": "prettier --write"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "objectWrap": "preserve",
+    "bracketSameLine": true,
+    "arrowParens": "always"
+  }
+}
