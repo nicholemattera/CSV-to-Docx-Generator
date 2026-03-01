@@ -63,6 +63,7 @@
         align-items: center;
         background: var(--primary-100);
         display: flex;
+        flex-direction: column;
         justify-content: center;
       }
 
@@ -87,7 +88,7 @@
       }
 
       main {
-        max-height: calc(100dvh - 96px);
+        max-height: calc(100dvh - 196px);
         overflow: hidden auto;
         padding: 16px 0;
       }
@@ -149,6 +150,18 @@
         width: 100%;
       }
 
+      footer {
+        color: var(--neutral-black);
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      footer img {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
       @media only screen and (max-width: 672px) {
         .container {
           width: calc(100dvw - 32px);
@@ -185,6 +198,10 @@
         }
 
         input::file-selector-button {
+          color: var(--neutral-white);
+        }
+
+        footer {
           color: var(--neutral-white);
         }
       }
@@ -227,6 +244,10 @@
         </form>
       </main>
     </div>
+    <footer class="footer">
+      <p>Proudly built in Saint Paul, Minnesota.</p>
+      <img src="/images/minnesota.svg" width="50px" alt="Minnesota Flag" />
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>
