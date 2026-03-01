@@ -53,15 +53,6 @@ export async function transformData(dataFile) {
         delete item[csvKey]
       })
 
-      if (item['R'].startsWith('Alternate')) {
-        item['RU'] = item['R']
-        item['RB'] = ''
-      } else {
-        item['RU'] = ''
-        item['RB'] = 'Delegate'
-      }
-      delete item['R']
-
       return item
     })
 }
