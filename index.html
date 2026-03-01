@@ -67,6 +67,19 @@
         justify-content: center;
       }
 
+      a {
+        color: var(--neutral-black);
+        cursor: pointer;
+        display: inline-block;
+        text-decoration: underline;
+      }
+
+      a:hover,
+      a:focus {
+        animation: shake 500ms infinite;
+        animation-timing-function: linear;
+      }
+
       .container {
         background: var(--neutral-white);
         border-radius: 16px;
@@ -178,6 +191,10 @@
           background: var(--primary-400);
         }
 
+        a {
+          color: var(--neutral-white);
+        }
+
         header {
           background: var(--primary-800);
         }
@@ -203,6 +220,18 @@
 
         footer {
           color: var(--neutral-white);
+        }
+      }
+
+      @keyframes shake {
+        0% {
+          transform: rotate(0.75deg);
+        }
+        50% {
+          transform: rotate(-0.75deg);
+        }
+        100% {
+          transform: rotate(0.75deg);
         }
       }
     </style>
@@ -245,7 +274,10 @@
       </main>
     </div>
     <footer class="footer">
-      <p>Proudly built in Saint Paul, Minnesota.</p>
+      <p>
+        Proudly built in Saint Paul, Minnesota.
+        <a href="https://ko-fi.com/nicholemattera" target="_blank">Buy me a coffee!</a>
+      </p>
       <img src="/images/minnesota.svg" width="50px" alt="Minnesota Flag" />
     </footer>
 
