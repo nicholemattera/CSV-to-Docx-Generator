@@ -64,14 +64,7 @@ body {
 a {
   color: var(--neutral-black);
   cursor: pointer;
-  display: inline-block;
   text-decoration: underline;
-}
-
-a:hover,
-a:focus {
-  animation: shake 500ms infinite;
-  animation-timing-function: linear;
 }
 
 .container {
@@ -162,6 +155,16 @@ footer {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+}
+
+footer a {
+  display: inline-block;
+}
+
+footer a:hover,
+footer a:focus {
+  animation: shake 500ms infinite;
+  animation-timing-function: linear;
 }
 
 footer img {
