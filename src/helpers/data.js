@@ -43,16 +43,19 @@ export async function getHeaders(dataFile) {
 export async function transformData(dataFile) {
   const result = await Papa.parse(await blobToText(dataFile), {
     header: true,
+    skipEmptyLines: true,
   })
 
-  return result.data
-    .filter((rows) => rows.length !== 0)
-    .map((item) => {
-      Object.keys(SD_66_MAP).forEach((csvKey) => {
-        item[SD_66_MAP[csvKey]] = item[csvKey]
-        delete item[csvKey]
-      })
+  return result.data.map((item) => {
+    Object.keys(SD_66_MAP).forEach((csvKey) => {
+      if (!item[csvKey]) {
+        return
+      }
 
-      return item
+      item[SD_66_MAP[csvKey]] = item[csvKey]
+      delete item[csvKey]
     })
+
+    return item
+  })
 }

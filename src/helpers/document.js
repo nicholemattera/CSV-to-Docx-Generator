@@ -9,7 +9,7 @@ function downloadBlob(blob, filename) {
 }
 
 function getFileName(index) {
-  return `labels-${index + 1}.docx`
+  return `document-${index + 1}.docx`
 }
 
 export async function generateDoc(templateFile, data, chunkSize) {
@@ -46,5 +46,5 @@ export async function generateDoc(templateFile, data, chunkSize) {
   }
 
   // Download the resulting zip file
-  downloadBlob(result.generate({ type: 'blob' }), `labels-${new Date().getTime()}.zip`)
+  downloadBlob(result.generate({ type: 'blob' }), `documents-${new Date().getTime()}.zip`)
 }
