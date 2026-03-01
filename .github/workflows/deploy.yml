@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
-      content: read
+      contents: read
 
     steps:
       - name: Checkout Repository
@@ -38,7 +38,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     permissions:
-      content: read
+      contents: read
 
     steps:
       - name: Checkout Repository
