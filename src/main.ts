@@ -22,7 +22,13 @@ csvElement.addEventListener('change', async () => {
 formElement.addEventListener('submit', async (e) => {
   e.preventDefault()
 
-  if (!csvElement.files || csvElement.files.length === 0 || !numberOfItemsElement || !templateElement.files || templateElement.files.length === 0) {
+  if (
+    !csvElement.files ||
+    csvElement.files.length === 0 ||
+    !numberOfItemsElement ||
+    !templateElement.files ||
+    templateElement.files.length === 0
+  ) {
     return false
   }
 

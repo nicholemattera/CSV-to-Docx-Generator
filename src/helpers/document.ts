@@ -6,6 +6,8 @@ function downloadBlob(blob: Blob, filename: string) {
   anchor.href = URL.createObjectURL(blob)
   anchor.download = filename
   anchor.click()
+
+  URL.revokeObjectURL(anchor.href)
 }
 
 function getFileName(index: number) {
@@ -13,13 +15,15 @@ function getFileName(index: number) {
 }
 
 export async function generateDoc(templateFile: File, data: Array<Array<Record<string, string>>>, chunkSize: number) {
+  const templateBuffer = await templateFile.arrayBuffer()
   const result = new PizZip()
 
-
   for (let index = 0; index < data.length; index++) {
+    const dataKeys = Object.keys(data[0][0])
+
     // Flatten the CSV data into an object to be passed in to the templater
     const dataChunk = data[index].reduce<Record<string, string>>((result, item, index) => {
-      Object.keys(item).forEach((key) => {
+      dataKeys.forEach((key) => {
         result[`${index}:${key}`] = item[key]
       })
 
@@ -27,16 +31,13 @@ export async function generateDoc(templateFile: File, data: Array<Array<Record<s
     }, {})
 
     // Fill in blank data for any remaining items
-    if (data[index].length < chunkSize) {
-      for (let y = data[index].length; y < chunkSize; y++) {
-        Object.keys(data[index][0]).forEach((key) => {
-          dataChunk[`${y}:${key}`] = ''
-        })
-      }
+    for (let y = data[index].length; y < chunkSize; y++) {
+      dataKeys.forEach((key) => {
+        dataChunk[`${y}:${key}`] = ''
+      })
     }
 
-    const zip = new PizZip(await templateFile.arrayBuffer())
-    const doc = new Docxtemplater(zip, {
+    const doc = new Docxtemplater(new PizZip(templateBuffer), {
       paragraphLoop: true,
       linebreaks: true,
     })
