@@ -1,21 +1,5 @@
 import Papa from 'papaparse'
 
-// TODO: Remove this by allowing user's to specify the mapping.
-const SD_66_MAP: Record<string, string> = {
-  'Delegate/Alternate Status': 'R',
-  Precinct: 'P',
-  'First Name': 'FN',
-  'Last Name': 'LN',
-  Address: 'A',
-  City: 'C',
-  State: 'S',
-  Zip: 'Z',
-  Email: 'E',
-  'Phone Number': 'PN',
-  'Type of Number': 'NT',
-  'Preferred Language': 'PL',
-}
-
 async function blobToText(blob: Blob): Promise<string> {
   return new Promise((resolve) => {
     const reader = new FileReader()
@@ -52,15 +36,6 @@ export async function transformData(dataFile: File) {
   const data = result.data as Array<Record<string, string>>
 
   return data.map((item) => {
-    Object.keys(SD_66_MAP).forEach((csvKey) => {
-      if (!item[csvKey] || !SD_66_MAP[csvKey]) {
-        return
-      }
-
-      item[SD_66_MAP[csvKey]] = item[csvKey]
-      delete item[csvKey]
-    })
-
     return item
   })
 }
