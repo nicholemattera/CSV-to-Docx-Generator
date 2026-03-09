@@ -41,3 +41,14 @@ formElement.addEventListener('submit', async (e) => {
 
   return false
 })
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(() => {
+      console.info('Service worker registered!')
+    })
+    .catch((error) => {
+      console.warn(`Error registering service worker:\n${error}.`)
+    })
+}
