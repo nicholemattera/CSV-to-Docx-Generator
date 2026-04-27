@@ -20,7 +20,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "docxtemplater": "^3.68.3",
+    "docxtemplater": "^3.68.6",
     "papaparse": "^5.5.3",
     "pizzip": "^3.2.0"
   },
